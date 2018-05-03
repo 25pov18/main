@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+
+<label class="form-label">Субъект:</label>
+
+<form method="post" action="/siti" id="io">
+
+                    <select  id="reg" name = "reg">
+
+                  {% for result in val %}
+                    <option  id = "{{ result.num }}" value="{{ result.num }}" name="reg"> {{result.dat}}</option>
+                  {% endfor %}
+
+                    </select>
+
+    {% csrf_token %}
+
+    <button type="submit"  form="io">Запросить</button>
+
+
+
+</form>
+
+
+
+</body>
+</html>

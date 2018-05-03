@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Заговловок страницы</title>
+
+<script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery3.js"></script>
+
+</head>
+<body >
+
+        <h1> Поебота </h1>
+
+      <p>
+        <a href="/" class="btn btn-success btn-lg">Главная страница</a>
+
+      </p>
+
+{% if name %}
+
+    <h4> Субъекты загружены </h4>
+{%   else %}
+<h4> 111111 </h4>
+{% endif %}
+
+
+
+
+<label class="form-label">Субъект:</label>
+
+<form method="post" name="errthert" action="/reg" id="io">
+
+                    <select  id="reg" name = "reg">
+
+                  {% for result in name %}
+                    <option  id = "{{ result.num }}" value="{{ result.num }}" name="reg"> {{result.dat}}</option>
+                  {% endfor %}
+
+                   </select>
+
+
+
+
+
+    {% csrf_token %}
+
+    <button type="submit"  form="io">Запросить</button>
+
+
+
+</form>
+
+<form method="post" action="/user">
+    <div class="form-group">
+            <p>Субьект
+                             <select name="subject_id"  >
+                                <option selected value="146000000000">146000000000</option>
+                             </select>
+            </p>
+            <p>Регион
+                             <select name="region_id"  >
+                                <option selected value="146204000000">146204000000</option>
+                             </select>
+            </p>
+            <p>Населенный пункт
+                             <select name="settlement_id"  >
+                                <option selected value="146204501000"> 146204501000</option>
+                             </select>
+            </p>
+
+            <p>Улица
+                  <input type="text" name="street" class="form-control" value="Дмитриева">
+            </p>
+
+            <input type="text" name="house" class="form-control" placeholder="Номер дома" value="24">
+            <input type="text" name="building" class="form-control" placeholder="Корпус">
+            <input type="text" name="structure" class="form-control" placeholder="Строение">
+            <input type="text" name="apartment" class="form-control" placeholder="Квартира">
+
+    </div>
+
+
+
+    {% csrf_token %}
+    <input type="submit" value="Start" class="btn btn-primary">
+
+
+</form>
+{{ request.GET.q }}
+
+
+
+<div id="result"> </div>
+
+
+
+
+
+<script type="text/javascript" src="{{ STATIC_URL }} /static/js/main.js">
+</script>
+
+
+
+
+
+
+</body>
+</html>

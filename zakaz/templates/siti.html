@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ <p>Город(село)
+                <select  id="reg" name = "reg">
+
+                  {% for result in val %}
+                    <option  id = "{{ result.num }}" value="{{ result.num }}" name="reg"> {{result.dat}}</option>
+                  {% endfor %}
+
+                   </select>
+            </p>
+
+</body>
+</html>

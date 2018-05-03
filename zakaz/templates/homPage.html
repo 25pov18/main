@@ -1,0 +1,73 @@
+
+<html>
+<head>
+    <title>Search</title>
+    <meta charset="utf-8" />
+<script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery3.js"></script>
+
+</head>
+<body>
+
+
+
+<form method="post" action="/zakaz">
+    <table border="1" width="100%" cellpadding="5">
+
+
+
+                    <tr>
+                        <th>"N"</th>
+                        <th><input  type="checkbox" id="checkbox">Кадастр</th>
+                        <th>Условный номер</th>
+                        <th>Площадь</th>
+                        <th>Собственность</th>
+                        <th>Назначение</th>
+                    </tr>
+
+                    {% for result in kad   %}
+                       <TR>
+                          <td>{{ forloop.counter }}</td>
+                          <TD><input type="checkbox" value="{{ result.kadastr }}"  name = "{{  forloop.counter  }}">{{ result.kadastr }}</TD>
+                          <TD class="c2"> {{ result.usl_nom }}</TD>
+                          <TD class="c2"> {{ result.v3 }}</TD>
+                          <TD class="c2"> {{ result.pravo }}</TD>
+                          <TD class="c4"> {{ result.naz }}</TD>
+                        </TR>
+                    {% endfor %}
+
+
+
+
+    </table>
+
+        <h4>Всего объектов <input  type="text" name="vsego_ob" value="{{  kol }} ">  </h4>
+        <h4>Адрес  объекта <input  type="text" name="adres" value="{{  adres }} ">  </h4>
+
+
+{% csrf_token %}
+<input type="submit" value="Отправить">
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+$('#checkbox').click(function(){
+    if ($(this).is(':checked')){
+        $('input:checkbox').prop('checked', true);
+    } else {
+        $('input:checkbox').prop('checked', false);
+    }
+});
+</script>
+</body>
+</html>
